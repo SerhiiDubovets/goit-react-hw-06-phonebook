@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterLabel, FilterInput } from './Filter.styled';
-import { filterContacts } from 'redux/Contacts/slice';
+import { filterContacts, getFilter } from 'redux/Contacts/slice';
 
 const SearchFilter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(getFilter);
 
   const onChangeFilter = e => {
     dispatch(filterContacts(e.target.value));

@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'root',
+  key: 'contactSlice',
   storage,
   whitelist: ['contacts'],
 };
@@ -34,10 +34,12 @@ export const contactSlice = createSlice({
   },
 });
 
-export const { addContacts, deleteContact, filterContacts } =
+export const { addContact, deleteContact, filterContacts } =
   contactSlice.actions;
-export const { addContact } = contactSlice.actions;
 export const persistedReducer = persistReducer(
   persistConfig,
   contactSlice.reducer
 );
+
+export const getContacts = state => state.contacts.contacts;
+export const getFilter = state => state.contacts.filter;
