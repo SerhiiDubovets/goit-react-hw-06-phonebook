@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { addContact, getContacts } from 'redux/Contacts/slice';
-import { ReactComponent as Add } from '../icons/add.svg';
+import { ReactComponent as Add } from '../../icons/add.svg';
 import { nanoid } from 'nanoid';
 import {
   AddForm,

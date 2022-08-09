@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, getContacts, getFilter } from 'redux/Contacts/slice';
+import { useSelector } from 'react-redux';
+import { getContacts, getFilter } from 'redux/Contacts/slice';
 import ContactItem from 'components/ContactItem/ContactItem';
 import { BlockContact, List, Text } from './ContactList.styled';
 
@@ -10,11 +10,9 @@ const ContactList = () => {
       contact.name.toLowerCase().includes(value.toLowerCase())
     );
   };
-  const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const value = useSelector(getFilter);
   const contact = filterCont(contacts, value);
-  const onDeleteContact = id => dispatch(deleteContact(id));
 
   return (
     <BlockContact>
@@ -27,9 +25,7 @@ const ContactList = () => {
               key={id}
               name={name}
               number={number}
-              onDeleteContact={() => {
-                onDeleteContact(id);
-              }}
+              id={id}
             ></ContactItem>
           ))
         )}
